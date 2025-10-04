@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Biology Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="logo">🌌</div>
+            <span>Space Biology Dashboard</span>
+        </div>
+        
+        <div class="nav-links">
+            <a href="/dashboard" class="nav-link active"><i class="fas fa-chart-bar"></i> Dashboard</a>
+            <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+            <a href="/contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="/logout" class="nav-link logout"><i class="fas fa-rocket"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Space Biology Knowledge Engine</h1>
+            <p>Explore decades of NASA biological research in space</p>
+            <div class="orbit-system">
+                <div class="central-body"></div>
+                <div class="orbiting-body"></div>
+            </div>
+        </header>
+
+        <div class="search-section">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search experiments by keyword, organism, or mission...">
+                <button id="searchBtn" class="btn-primary">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+
+        <div class="filters-section">
+            <div class="filter-group">
+                <label><i class="fas fa-filter"></i> Organism Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Plant">Plants</option>
+                    <option value="Mammal">Mammals</option>
+                    <option value="Insect">Insects</option>
+                    <option value="Microbe">Microbes</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label><i class="fas fa-paw"></i> Organism:</label>
+                <select id="organismFilter">
+                    <option value="all">All Organisms</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label><i class="fas fa-calendar"></i> Year Range:</label>
+                <div class="range-inputs">
+                    <input type="number" id="yearFrom" placeholder="From" min="1960" max="2025">
+                    <span>to</span>
+                    <input type="number" id="yearTo" placeholder="To" min="1960" max="2025">
+                </div>
+            </div>
+
+            <button id="applyFilters" class="btn-primary">
+                <i class="fas fa-check"></i> Apply Filters
+            </button>
+            <button id="resetFilters" class="btn-secondary">
+                <i class="fas fa-redo"></i> Reset
+            </button>
+        </div>
+
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">🧬</div>
+                <div class="stat-content">
+                    <h3 id="totalExperiments">0</h3>
+                    <p>Total Experiments</p>
+                </div>
+                <div class="stat-animation"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🌱</div>
+                <div class="stat-content">
+                    <h3 id="plantExperiments">0</h3>
+                    <p>Plant Studies</p>
+                </div>
+                <div class="stat-animation"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🐭</div>
+                <div class="stat-content">
+                    <h3 id="mammalExperiments">0</h3>
+                    <p>Mammal Studies</p>
+                </div>
+                <div class="stat-animation"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-content">
+                    <h3>ISS</h3>
+                    <p>Primary Platform</p>
+                </div>
+                <div class="stat-animation"></div>
+            </div>
+        </div>
+
+        <div class="charts-section">
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-pie"></i> Experiments by Category</h3>
+                <div id="categoryChart" class="chart">
+                    <div class="loading">Loading chart...</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-line"></i> Experiments Over Time</h3>
+                <div id="timelineChart" class="chart">
+                    <div class="loading">Loading chart...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="experiments-section">
+            <h2><i class="fas fa-flask"></i> Research Experiments</h2>
+            <div id="experimentsList" class="experiments-grid">
+                <div class="loading-shimmer" style="height: 200px; border-radius: 15px; grid-column: 1 / -1;"></div>
+            </div>
+            <div class="pagination">
+                <button id="prevPage" class="btn-secondary">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span id="pageInfo">Page 1 of 1</span>
+                <button id="nextPage" class="btn-secondary">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+            <div class="action-buttons">
+                <button class="btn-primary" onclick="window.open('https://genelab.nasa.gov', '_blank')">
+                    <i class="fas fa-dna"></i> GeneLab Database
+                </button>
+                <button class="btn-primary" onclick="window.open('https://lsda.jsc.nasa.gov', '_blank')">
+                    <i class="fas fa-archive"></i> LSDA Archive
+                </button>
+                <button class="btn-primary" onclick="window.location.href='/contact'">
+                    <i class="fas fa-envelope"></i> Contact Research Team
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/search.js"></script>
+    <script>
+// Check if user is admin and show admin link
+fetch('/api/auth/check')
+    .then(response => response.json())
+    .then(result => {
+        if (result.loggedIn && result.isAdmin) {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks) {
+                const adminLink = document.createElement('a');
+                adminLink.href = '/admin';
+                adminLink.className = 'nav-link';
+                adminLink.innerHTML = '<i class="fas fa-cog"></i> Admin';
+                navLinks.insertBefore(adminLink, navLinks.querySelector('.logout'));
+            }
+        }
+    });
+</script>
+</body>
+</html>
