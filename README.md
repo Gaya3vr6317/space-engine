@@ -43,6 +43,20 @@ By transforming scattered data into an organized, searchable knowledge engine, B
 
 # Link to product walkthrough
 
+
+## How it works?
+🔍 Keyword Search: Users enter a biological keyword (e.g., organism, condition, experiment) into the platform.
+
+🧠 Data Retrieval: The system searches NASA’s bioscience datasets and research archives for relevant information.
+
+🧪 AI Processing: Natural language processing and AI summarization organize and condense complex scientific data.
+
+🌐 Knowledge Mapping: Information is structured into a connected knowledge base, showing relationships between experiments, organisms, and outcomes.
+
+📊 Visualization: Results are displayed through interactive dashboards and visualizations for easy exploration and understanding.
+
+🚀 Accessible Insights: Users receive concise summaries, key findings, and experiment details — all in one place.
+
 # Future Plans
 In the future, we envision BioNova evolving into a comprehensive and intelligent platform that goes beyond information retrieval. Our goal is to integrate a broader range of NASA datasets, research papers, and mission archives, creating a richer and more connected knowledge base. With advancements in AI and semantic search, BioNova will be able to understand context, offer deeper insights, and even predict biological outcomes in space environments.
 
